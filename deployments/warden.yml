@@ -1,0 +1,43 @@
+name: timer-warden
+director_uuid: <%= `bosh status --uuid` %>
+
+releases:
+- name: timer-bosh-release
+  version: latest
+
+compilation:
+  workers: 2
+  network: timer-network
+  reuse_compilation_vms: true
+  cloud_properties:
+    name: random
+
+update:
+  canaries: 1
+  canary_watch_time: 30000-240000
+  update_watch_time: 30000-600000
+  max_in_flight: 3
+
+resource_pools:
+- name: common-resource-pool
+  network: timer-network
+  size: 1
+  stemcell:
+    name: bosh-warden-boshlite-ubuntu-trusty-go_agent
+    version: latest
+  cloud_properties:
+    name: random
+
+networks:
+- name: timer-network
+  type: dynamic
+  cloud_properties:
+    name: random
+
+jobs:
+- name: timer
+  template: timer
+  instances: 1
+  resource_pool: common-resource-pool
+  networks:
+    - name: timer-network

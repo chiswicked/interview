@@ -1,0 +1,5 @@
+check process timer
+  with pidfile /var/vcap/sys/run/timer/timer.pid
+  start program "/var/vcap/jobs/timer/bin/timerctl start"
+  stop program "/var/vcap/jobs/timer/bin/timerctl stop"
+  group vcap

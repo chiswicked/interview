@@ -1,0 +1,6 @@
+---
+name: timer
+templates:
+  timerctl.erb: bin/timerctl
+packages:
+- interview-timer

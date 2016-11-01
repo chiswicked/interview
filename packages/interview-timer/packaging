@@ -1,0 +1,8 @@
+# abort script on any command that exits with a non zero value
+set -e
+
+echo "Extracting interview-timer...\n"
+tar xvzf interview-timer.tgz
+
+echo "Copying interview-timer files...\n"
+cp -av interview-timer/* ${BOSH_INSTALL_TARGET}
