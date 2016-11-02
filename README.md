@@ -29,7 +29,7 @@ $ git clone https://github.com/cloudfoundry/bosh-lite
 $ cd bosh-lite
 ```
 
-## Modify Vagranfile
+## Modify Vagrantfile
 
 ```
 config.vm.provider :virtualbox do |v, override|
@@ -79,7 +79,7 @@ $ bosh upload release
 $ bosh deploy
 ```
 
-# Verify deployment
+## Verify deployment
 
 ```
 $ cd ../bosh-lite
